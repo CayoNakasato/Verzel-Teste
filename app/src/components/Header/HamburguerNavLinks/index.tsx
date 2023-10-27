@@ -18,6 +18,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Link,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
@@ -73,15 +74,16 @@ export const HamburguerNavLinks = () => {
                 Crie uma conta ou faça o login para assumir o controle de sua
                 compra, venda ou financiamento.
               </Text>
-
-              <Button
-                color={"white"}
-                backgroundColor={"black"}
-                width={"95%"}
-                fontWeight={"400"}
-              >
-                Cadastre-se
-              </Button>
+              <Link href="/login">
+                <Button
+                  color={"white"}
+                  backgroundColor={"black"}
+                  width={"95%"}
+                  fontWeight={"400"}
+                >
+                  Cadastre-se
+                </Button>
+              </Link>
 
               <Flex flexDirection={"column"} gap="10px">
                 <Button
