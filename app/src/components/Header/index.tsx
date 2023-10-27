@@ -10,6 +10,7 @@ export const Header = () => {
         alignItems={"center"}
         boxShadow="lg"
         bg="white"
+        padding={"5px"}
       >
         <Image marginLeft="10px" src={kavakImg} width="80px" height="80px" />
         <HamburguerNavLinks />
