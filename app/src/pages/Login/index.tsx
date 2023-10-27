@@ -1,14 +1,10 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
-
+import { Box } from "@chakra-ui/react";
+import { Login } from "../../components/Login";
 
 export const LoginPage = () => {
   return (
     <Box>
-      <Flex>
-        <form>
-            <Heading>LOGIN</Heading>
-        </form>
-      </Flex>
+      <Login />
     </Box>
   );
 };

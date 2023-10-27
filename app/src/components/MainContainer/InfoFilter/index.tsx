@@ -1,4 +1,4 @@
-import { Flex} from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { InfoFilterPrice } from "./InfoFilterPrice";
 import { InfoFilterSpecific } from "./InfoFilterSpecific";
 import { InfoFilterVehicleModel } from "./InfoFilterVehicleModel";
@@ -11,13 +11,11 @@ export const InfoFilter = () => {
         borderTopLeftRadius={"10px"}
         borderTopRightRadius={"10px"}
       >
+        <InfoFilterPrice />
 
-        <InfoFilterPrice/>
-        
         <InfoFilterSpecific />
-        
+
         <InfoFilterVehicleModel />
-        
       </Flex>
     </>
   );

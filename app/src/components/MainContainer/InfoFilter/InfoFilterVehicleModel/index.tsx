@@ -3,7 +3,7 @@ import { Button, Flex, Stack, Text } from "@chakra-ui/react";
 export const InfoFilterVehicleModel = () => {
   return (
     <>
-      <Flex padding={"5px"} flexDirection={"column"}>
+      <Flex padding={"20px"} flexDirection={"column"}>
         <Text padding={"5px"}>Escolha o tipo:</Text>
 
         <Stack spacing={1} direction="row" align="center">

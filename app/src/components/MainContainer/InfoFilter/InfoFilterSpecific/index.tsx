@@ -3,16 +3,23 @@ import { Button, Flex, Stack } from "@chakra-ui/react";
 export const InfoFilterSpecific = () => {
   return (
     <>
-      <Flex padding={"5px"}>
-        <Stack spacing={1} direction="row" align="center">
+      <Flex padding={"20px"} >
+        <Stack
+          spacing={4}
+          maxWidth={"90%"}
+          direction="row"
+          align="center"
+          overflowX={"auto"}
+        >
           <Button
             colorScheme="teal"
             size="sm"
             backgroundColor={"#E9EEF7"}
             color={"#3374DB"}
             fontWeight={"600"}
+            minWidth={"40%"}
           >
-            Lolcalização
+            Localização
           </Button>
           <Button
             colorScheme="teal"
@@ -20,6 +27,8 @@ export const InfoFilterSpecific = () => {
             backgroundColor={"#E9EEF7"}
             color={"#3374DB"}
             fontWeight={"600"}
+            minWidth={"40%"}
+
           >
             Marca e Modelo
           </Button>
@@ -29,6 +38,8 @@ export const InfoFilterSpecific = () => {
             backgroundColor={"#E9EEF7"}
             color={"#3374DB"}
             fontWeight={"600"}
+            minWidth={"40%"}
+
           >
             Ano
           </Button>
@@ -38,6 +49,8 @@ export const InfoFilterSpecific = () => {
             backgroundColor={"#E9EEF7"}
             color={"#3374DB"}
             fontWeight={"600"}
+            minWidth={"40%"}
+
           >
             + Filtros
           </Button>

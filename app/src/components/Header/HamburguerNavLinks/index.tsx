@@ -74,7 +74,7 @@ export const HamburguerNavLinks = () => {
                 Crie uma conta ou faça o login para assumir o controle de sua
                 compra, venda ou financiamento.
               </Text>
-              <Link href="/login">
+              <Link href="/register">
                 <Button
                   color={"white"}
                   backgroundColor={"black"}

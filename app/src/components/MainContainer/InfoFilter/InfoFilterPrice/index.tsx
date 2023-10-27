@@ -3,12 +3,12 @@ import { Flex, Select, Text } from "@chakra-ui/react";
 export const InfoFilterPrice = () => {
   return (
     <>
-      <Text padding={"10px 0 0 10px"} fontSize="sm">
+      <Text padding={"20px 0 0 20px"} fontSize="sm">
         CARROS USADOS
       </Text>
 
       <Flex
-        padding={"10px"}
+        padding={"20px"}
         justifyContent={"space-between"}
         alignItems={"center"}
       >
