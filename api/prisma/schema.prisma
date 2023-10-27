@@ -21,6 +21,7 @@ model User {
 model Vehicle {
   id       String @id @unique @default(uuid())
   name     String
+  price    Int
   brand    String
   model    String
   frontImg String
