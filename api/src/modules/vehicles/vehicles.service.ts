@@ -59,9 +59,13 @@ export class VehiclesService {
       throw new HttpException('Vehicle not found', 404);
     }
 
+    const priceAsInt = updateVehicleDto.price
+      ? parseInt(updateVehicleDto.price, 10)
+      : undefined;
+
     const updatedVehicle = await this.prisma.vehicle.update({
       where: { id },
-      data: { ...existingVehicle, ...updateVehicleDto },
+      data: { ...existingVehicle, ...updateVehicleDto, price: priceAsInt },
     });
 
     return updatedVehicle;

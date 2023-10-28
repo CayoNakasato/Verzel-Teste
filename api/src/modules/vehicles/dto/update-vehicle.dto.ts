@@ -1,4 +1,4 @@
-import { IsOptional, IsString } from 'class-validator';
+import { IsNumberString, IsOptional, IsString } from 'class-validator';
 
 export class UpdateVehicleDto {
   @IsOptional()
@@ -16,4 +16,8 @@ export class UpdateVehicleDto {
   @IsOptional()
   @IsString()
   frontImg?: string;
+
+  @IsOptional()
+  @IsNumberString({}, { message: 'Price must be a number string' })
+  price?: string;
 }
