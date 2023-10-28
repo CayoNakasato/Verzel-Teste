@@ -37,7 +37,14 @@ export class UsersService {
   }
 
   findAll() {
-    const users = this.prisma.user.findMany();
+    const users = this.prisma.user.findMany({
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        admin: true,
+      },
+    });
 
     return users;
   }
