@@ -2,8 +2,8 @@ export interface IVehicleContextData {
   createVehicle: (data: IVehicleCreate) => void;
   getVehicles: () => Promise<void>;
   deleteVehicle: (vehicleId: string) => Promise<void>;
-  updateVehicle: (data: IVehicleCreate, vehicleId: string) => Promise<void>;
-  vehicles: IVehicleCreate[]
+  updateVehicle: (data: IVehicleUpdate, vehicleId: string) => Promise<void>;
+  vehicles: IVehicleCreate[];
 }
 
 export interface IVehicleCreate {
@@ -28,3 +28,16 @@ export interface CarsListProps {
   vehicles: IVehicleCreate[];
 }
 
+export interface CarCardProps {
+  car: IVehicleCreate;
+}
+
+export interface DeleteCarModalProps {
+  id: string;
+  closeModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface EditeModalProps {
+  car: IVehicleCreate;
+  closeModal: React.Dispatch<React.SetStateAction<boolean>>;
+}

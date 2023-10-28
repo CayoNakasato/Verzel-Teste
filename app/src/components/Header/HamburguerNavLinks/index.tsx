@@ -83,10 +83,13 @@ export const HamburguerNavLinks = () => {
                 >
                   Cadastre-se
                 </Button>
-                <Text>
-                  Já possui conta? <Link href="/login" color={"blue"}>Logue</Link>
-                </Text>
               </Link>
+              <Text>
+                Já possui conta?{" "}
+                <Link href="/login" color={"blue"}>
+                  Logue
+                </Link>
+              </Text>
 
               <Flex flexDirection={"column"} gap="10px">
                 <Button

@@ -51,7 +51,7 @@ export const Dashboard = () => {
           <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
-              <ModalHeader>Create your vehicle</ModalHeader>
+              <ModalHeader>Create vehicle</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
                 <CreateVehicleForm />

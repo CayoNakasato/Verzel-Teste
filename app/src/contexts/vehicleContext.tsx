@@ -1,6 +1,7 @@
 import {
   IVehicleContextData,
   IVehicleCreate,
+  IVehicleUpdate,
 } from "../interfaces/Vehicle/vehicle.interface";
 import { createContext, useState } from "react";
 import { toast } from "react-toastify";
@@ -41,8 +42,33 @@ export const VehicleProvider = ({ children }: ProviderData) => {
     });
   };
 
-  const deleteVehicle = async () => {};
-  const updateVehicle = async () => {};
+  const deleteVehicle = async (vehicleId: string) => {
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+    await api.delete(`/vehicles/${vehicleId}`).then(() => {
+      setVehicles((prevVehicles) =>
+        prevVehicles.filter((vehicle) => vehicle.id !== vehicleId)
+      );
+      toast.success("Veículo excluído com sucesso!");
+    });
+  };
+
+  const updateVehicle = async (data: IVehicleUpdate, vehicleId: string) => {
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+    await api
+      .patch(`/vehicles/${vehicleId}`, data)
+      .then((resp) => {
+        console.log(resp);
+        setVehicles((prevVehicles) =>
+          prevVehicles.map((vehicle) =>
+            vehicle.id === vehicleId ? resp.data : vehicle
+          )
+        );
+        toast.success("Veículo editado com sucesso!");
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <VehicleContext.Provider
