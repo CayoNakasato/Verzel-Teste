@@ -20,5 +20,5 @@ export class CreateVehicleDto {
   userId: string;
 
   @IsInt()
-  price: number;
+  price: string;
 }

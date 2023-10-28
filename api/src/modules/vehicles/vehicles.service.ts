@@ -19,9 +19,13 @@ export class VehiclesService {
     if (!user) {
       throw new HttpException('User not found', 404);
     }
+    const priceAsInt = parseInt(data.price, 10);
 
     const vehicle = await this.prisma.vehicle.create({
-      data: data,
+      data: {
+        ...data,
+        price: priceAsInt,
+      },
     });
     return vehicle;
   }
