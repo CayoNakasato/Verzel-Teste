@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { MainContainer } from "../pages/Home";
+import { MainContainerPage } from "../pages/Home";
 import { RegisterPage } from "../pages/Register";
 import { LoginPage } from "../pages/Login";
 import { DashboardPage } from "../pages/Dashboard";
@@ -10,7 +10,7 @@ export const Router = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
-      <Route path="/" element={<MainContainer />} />
+      <Route path="/" element={<MainContainerPage />} />
     </Routes>
   );
 };

@@ -83,6 +83,9 @@ export const HamburguerNavLinks = () => {
                 >
                   Cadastre-se
                 </Button>
+                <Text>
+                  Já possui conta? <Link href="/login" color={"blue"}>Logue</Link>
+                </Text>
               </Link>
 
               <Flex flexDirection={"column"} gap="10px">

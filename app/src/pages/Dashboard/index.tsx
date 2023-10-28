@@ -1,5 +1,5 @@
 import { Dashboard } from "../../components/Dashboard";
-import { MainContainer } from "../Home";
+import { MainContainerPage } from "../Home";
 import { useEffect, useState } from "react";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { Spinner } from "@chakra-ui/react";
@@ -27,5 +27,5 @@ export const DashboardPage = () => {
   if (loading) {
     return <Spinner />;
   }
-  return isAdmin ? <Dashboard /> : <MainContainer />;
+  return isAdmin ? <Dashboard /> : <MainContainerPage />;
 };

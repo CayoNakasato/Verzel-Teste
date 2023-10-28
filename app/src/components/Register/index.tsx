@@ -6,9 +6,11 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Link,
   Radio,
   RadioGroup,
   Stack,
+  Text,
 } from "@chakra-ui/react";
 import { Header } from "../Header";
 import { useContext, useState } from "react";
@@ -130,6 +132,12 @@ export const Register = () => {
             >
               Cadastrar-se
             </Button>
+            <Text>
+              Já possui conta?{" "}
+              <Link href="/login" color={"blue"}>
+                Logue
+              </Link>
+            </Text>
           </Flex>
         </FormControl>
       </Flex>

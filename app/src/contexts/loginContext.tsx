@@ -13,7 +13,7 @@ export const LoginProvider = ({ children }: ProviderData) => {
     try {
       const response = await api.post("/login/", data);
       localStorage.setItem("@Token", response.data.token);
-      toast.success("Login Realizado");
+      toast.success("Login Realizado!");
       navigate("/dashboard")
     } catch (error) {
       toast.error("Algo não deu certo");
