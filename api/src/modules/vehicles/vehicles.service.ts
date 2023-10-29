@@ -1,7 +1,7 @@
 import { HttpException, Injectable } from '@nestjs/common';
 import { CreateVehicleDto } from './dto/create-vehicle.dto';
 import { UpdateVehicleDto } from './dto/update-vehicle.dto';
-import { PrismaClient } from '@prisma/client';
+import { Prisma, PrismaClient } from '@prisma/client';
 
 @Injectable()
 export class VehiclesService {
@@ -30,17 +30,27 @@ export class VehiclesService {
     return vehicle;
   }
 
-  async findAll() {
-    const vehicles = await this.prisma.vehicle.findMany();
+  async findAll(orderBy: string) {
+    const vehicles = await this.prisma.vehicle.findMany({
+      orderBy: {
+        price: orderBy.toLowerCase() === 'desc' ? 'desc' : 'asc',
+      },
+    });
 
     return vehicles;
   }
 
-  async findAllPagination(page = 1, limit = 5) {
+  async findAllPagination(page = 1, limit = 5, orderBy: 'desc' | 'asc') {
     const skip = (page - 1) * limit;
     const vehicles = await this.prisma.vehicle.findMany({
       skip,
       take: limit,
+      orderBy: {
+        price:
+          orderBy.toLowerCase() === 'desc'
+            ? Prisma.SortOrder.desc
+            : Prisma.SortOrder.asc,
+      },
     });
 
     const totalItems = await this.prisma.vehicle.count();

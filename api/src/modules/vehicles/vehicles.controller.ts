@@ -23,14 +23,22 @@ export class VehiclesController {
   }
 
   @Get()
-  async findAll() {
-    const result = await this.vehiclesService.findAll();
+  async findAll(@Query('orderBy') orderBy: string = 'desc') {
+    const result = await this.vehiclesService.findAll(orderBy);
     return result;
   }
 
   @Get('/pagination')
-  async findAllPagination(@Query('page') page = 1, @Query('limit') limit = 5) {
-    const result = await this.vehiclesService.findAllPagination(page, limit);
+  async findAllPagination(
+    @Query('page') page = 1,
+    @Query('limit') limit = 5,
+    @Query('orderBy') orderBy: 'asc' | 'desc' = 'desc',
+  ) {
+    const result = await this.vehiclesService.findAllPagination(
+      page,
+      limit,
+      orderBy,
+    );
     return result;
   }
 
