@@ -8,7 +8,7 @@ export const InfoFilterPrice = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getVehiclesPerPage(1);
+    getVehiclesPerPage(1, "desc");
 
     setLoading(false);
   }, []);
@@ -19,17 +19,15 @@ export const InfoFilterPrice = () => {
     const sortedCars = [...vehiclesPagination.vehicles];
 
     if (sortBy === "Menor preço") {
-      sortedCars.sort((a, b) => a.price - b.price);
+      getVehiclesPerPage(1, "asc");
     } else if (sortBy === "Maior preço") {
-      sortedCars.sort((a, b) => b.price - a.price);
+      getVehiclesPerPage(1, "desc");
     }
 
     const updatedPagination = {
       ...vehiclesPagination,
       vehicles: sortedCars,
     };
-
-    console.log(updatedPagination);
 
     setVehiclesPagination(updatedPagination);
   };

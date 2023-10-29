@@ -1,7 +1,10 @@
 export interface IVehicleContextData {
   createVehicle: (data: IVehicleCreate) => void;
-  getVehicles: () => Promise<void>;
-  getVehiclesPerPage: (currentPage: number) => Promise<void>;
+  getVehicles: (orderBy: "desc" | "asc") => Promise<void>;
+  getVehiclesPerPage: (
+    currentPage: number,
+    orderBy: "asc" | "desc"
+  ) => Promise<void>;
   deleteVehicle: (vehicleId: string) => Promise<void>;
   updateVehicle: (data: IVehicleUpdate, vehicleId: string) => Promise<void>;
   vehicles: IVehicleCreate[];

@@ -24,7 +24,7 @@ export const Dashboard = () => {
   const { getVehicles, vehicles } = useContext(VehicleContext);
 
   useEffect(() => {
-    getVehicles();
+    getVehicles("desc");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

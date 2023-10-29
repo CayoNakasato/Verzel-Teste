@@ -43,27 +43,30 @@ export const VehicleProvider = ({ children }: ProviderData) => {
       .catch((err) => console.log(err));
   };
 
-  const getVehicles = async () => {
-    await api.get("/vehicles").then((res) => {
+  const getVehicles = async (orderBy: string) => {
+    await api.get(`vehicles?orderBy=${orderBy}`).then((res) => {
       setVehicles(res.data);
     });
   };
 
-  const getVehiclesPerPage = async (currentPage: number) => {
+  const getVehiclesPerPage = async (currentPage: number, orderBy: string) => {
     if (currentPage === undefined) {
       return;
     }
-    await api.get(`/vehicles/pagination/?page=${currentPage}`).then((res) => {
-      const allVehicles = res.data.vehicles;
+    await api
+      .get(`/vehicles/pagination/?orderBy=${orderBy}&page=${currentPage}`)
+      .then((res) => {
+        const allVehicles = res.data.vehicles;
 
-      setVehicles(allVehicles);
-      setVehiclesPagination({
-        ...vehiclesPagination,
-        vehicles: allVehicles,
-        currentPage: currentPage,
-        totalItems: res.data.totalItems,
+        setVehicles(allVehicles);
+
+        setVehiclesPagination({
+          ...vehiclesPagination,
+          vehicles: allVehicles,
+          currentPage: currentPage,
+          totalItems: res.data.totalItems,
+        });
       });
-    });
   };
 
   const deleteVehicle = async (vehicleId: string) => {

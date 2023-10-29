@@ -18,7 +18,7 @@ export const VehicleContainer = () => {
 
   useEffect(() => {
     const pageToLoad = currentPage || 1;
-    getVehiclesPerPage(pageToLoad).then(() => {
+    getVehiclesPerPage(pageToLoad, "desc").then(() => {
       setLoading(false);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

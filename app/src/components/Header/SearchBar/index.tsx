@@ -19,8 +19,8 @@ export const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    getVehiclesPerPage(1);
-    getVehicles();
+    getVehiclesPerPage(1, "desc");
+    getVehicles("desc");
   }, []);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
