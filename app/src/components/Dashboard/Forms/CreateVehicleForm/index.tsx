@@ -1,14 +1,11 @@
-import {
-  Button,
-  Flex,
-  FormControl,
-  Input,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Button, Flex, FormControl, Input } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import z from "zod";
-import { IVehicleCreate } from "../../../../interfaces/Vehicle/vehicle.interface";
-import { useContext} from "react";
+import {
+  CreateModalProps,
+  IVehicleCreate,
+} from "../../../../interfaces/Vehicle/vehicle.interface";
+import { useContext } from "react";
 import { UserContext } from "../../../../contexts/userContext";
 import { UserList } from "../UserList";
 import { VehicleContext } from "../../../../contexts/vehicleContext";
@@ -22,19 +19,19 @@ const schema = z.object({
   price: z.string(),
 });
 
-export const CreateVehicleForm = () => {
-  const { onClose } = useDisclosure();
-
+export const CreateVehicleForm: React.FC<CreateModalProps> = ({
+  closeModal,
+}) => {
   const { handleSubmit, register } = useForm<IVehicleCreate>();
 
   const { users } = useContext(UserContext);
 
   const { createVehicle } = useContext(VehicleContext);
 
-
   const onSubmit = async (data: IVehicleCreate) => {
     schema.parse(data);
     createVehicle(data);
+    closeModal(false);
   };
 
   return (
@@ -62,7 +59,7 @@ export const CreateVehicleForm = () => {
               <Button width={"50%"} colorScheme="blue" type="submit">
                 Add Car
               </Button>
-              <Button width={"50%"} onClick={onClose}>
+              <Button width={"50%"} onClick={() => closeModal(false)}>
                 Cancel
               </Button>
             </Flex>

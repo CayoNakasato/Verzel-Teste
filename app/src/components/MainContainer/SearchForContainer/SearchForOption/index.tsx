@@ -1,13 +1,13 @@
 import {
-  Button,
-  Divider,
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
   Flex,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
+  Link,
 } from "@chakra-ui/react";
-import { FaArrowDown } from "react-icons/fa";
 
 interface IData {
   data: SearchOptionsInterface;
@@ -21,28 +21,25 @@ interface SearchOptionsInterface {
 export const SearchForOption = ({ data }: IData) => {
   return (
     <>
-      <Menu>
-        <Flex
-          alignItems={"center"}
-        >
-          <MenuButton
-            rightIcon={<FaArrowDown />}
-            as={Button}
-            variant={"ghost"}
-            width={"100%"}
-            height={"30px"}
-          >
-            Buscar por {data.name}
-          </MenuButton>
-        </Flex>
-        <MenuList>
-          {data.subOptions.map((opt, index) => {
-            return <MenuItem key={index}>{opt}</MenuItem>;
-          })}
-        </MenuList>
-      </Menu>
-
-      <Divider />
+      <Accordion border={"none"} allowMultiple>
+        <AccordionItem border={"none"}>
+          <h2>
+            <AccordionButton>
+              <Box as="span" flex="1" textAlign="left">
+                Buscar por {data.name}
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            <Flex flexDirection={"column"} gap={"10px"}>
+              {data.subOptions.map((opt, index) => {
+                return <Link key={index}>{opt}</Link>;
+              })}
+            </Flex>
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
     </>
   );
 };

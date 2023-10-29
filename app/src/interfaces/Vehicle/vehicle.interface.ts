@@ -41,3 +41,7 @@ export interface EditeModalProps {
   car: IVehicleCreate;
   closeModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export interface CreateModalProps {
+  closeModal: React.Dispatch<React.SetStateAction<boolean>>;
+}

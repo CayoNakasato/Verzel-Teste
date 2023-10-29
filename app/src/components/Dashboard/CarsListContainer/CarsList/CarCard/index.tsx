@@ -10,7 +10,6 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { CarCardProps } from "../../../../../interfaces/Vehicle/vehicle.interface";
@@ -20,8 +19,6 @@ import { EditCarModal } from "../EditCarModal";
 import { DeleteCarModal } from "../DeleteCarModal";
 
 export const CarCard: React.FC<CarCardProps> = ({ car }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
@@ -62,7 +59,7 @@ export const CarCard: React.FC<CarCardProps> = ({ car }) => {
                     <ModalHeader>Edit vehicle</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                      <EditCarModal car={car} closeModal={setEditModalOpen}/>
+                      <EditCarModal car={car} closeModal={setEditModalOpen} />
                     </ModalBody>
                   </ModalContent>
                 </Modal>
@@ -81,7 +78,10 @@ export const CarCard: React.FC<CarCardProps> = ({ car }) => {
                     <ModalHeader>Edit vehicle</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                      <DeleteCarModal id={car.id} closeModal={setDeleteModalOpen}/>
+                      <DeleteCarModal
+                        id={car.id}
+                        closeModal={setDeleteModalOpen}
+                      />
                     </ModalBody>
                   </ModalContent>
                 </Modal>

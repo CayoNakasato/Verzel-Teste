@@ -35,6 +35,7 @@ export const VehicleProvider = ({ children }: ProviderData) => {
   };
 
   const getVehicles = async () => {
+    // console.log(token);
     api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
     await api.get("/vehicles").then((res) => {
