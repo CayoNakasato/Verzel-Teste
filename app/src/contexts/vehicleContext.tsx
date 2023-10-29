@@ -24,7 +24,7 @@ export const VehicleProvider = ({ children }: ProviderData) => {
     useState<IVehiclePagination>({
       totalItems: 0,
       currentPage: 1,
-      limit: 10,
+      limit: 5,
       vehicles: [],
     });
 
@@ -50,15 +50,18 @@ export const VehicleProvider = ({ children }: ProviderData) => {
   };
 
   const getVehiclesPerPage = async (currentPage: number) => {
-    if(currentPage === undefined){
-      return
+    if (currentPage === undefined) {
+      return;
     }
     await api.get(`/vehicles/pagination/?page=${currentPage}`).then((res) => {
+      const allVehicles = res.data.vehicles;
+
+      setVehicles(allVehicles);
       setVehiclesPagination({
+        ...vehiclesPagination,
+        vehicles: allVehicles,
+        currentPage: currentPage,
         totalItems: res.data.totalItems,
-        currentPage: res.data.currentPage,
-        limit: res.data.limit,
-        vehicles: res.data.vehicles,
       });
     });
   };
@@ -99,6 +102,7 @@ export const VehicleProvider = ({ children }: ProviderData) => {
         deleteVehicle,
         updateVehicle,
         getVehiclesPerPage,
+        setVehiclesPagination,
         vehiclesPagination,
         vehicles,
       }}

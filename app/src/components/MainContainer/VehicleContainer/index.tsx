@@ -5,6 +5,7 @@ import { SearchFor } from "../SearchForContainer/SearchFor";
 import { useContext, useEffect, useState } from "react";
 import { VehicleContext } from "../../../contexts/vehicleContext";
 
+
 export const VehicleContainer = () => {
   const { getVehiclesPerPage, vehiclesPagination } = useContext(VehicleContext);
   const [loading, setLoading] = useState(true);
@@ -20,6 +21,7 @@ export const VehicleContainer = () => {
     getVehiclesPerPage(pageToLoad).then(() => {
       setLoading(false);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
   if (loading) {
@@ -31,7 +33,7 @@ export const VehicleContainer = () => {
     <>
       <Flex flexDirection={"column"} gap={"30px"}>
         <Wrap spacing={"20px"} margin={"10px 0 10px 0"}>
-          <Vehicles vehicles={vehicles} />
+          <Vehicles vehicles ={vehicles} />
         </Wrap>
         <ChangePageButtons
           vehiclesPagination={vehiclesPagination}

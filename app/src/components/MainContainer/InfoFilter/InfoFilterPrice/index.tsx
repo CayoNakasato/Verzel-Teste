@@ -3,14 +3,36 @@ import { useContext, useEffect, useState } from "react";
 import { VehicleContext } from "../../../../contexts/vehicleContext";
 
 export const InfoFilterPrice = () => {
-  const { getVehiclesPerPage, vehiclesPagination } = useContext(VehicleContext);
+  const { getVehiclesPerPage, vehiclesPagination, setVehiclesPagination } =
+    useContext(VehicleContext);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getVehiclesPerPage();
+    getVehiclesPerPage(1);
 
     setLoading(false);
   }, []);
+
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const sortBy = event.target.value;
+
+    const sortedCars = [...vehiclesPagination.vehicles];
+
+    if (sortBy === "Menor preço") {
+      sortedCars.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "Maior preço") {
+      sortedCars.sort((a, b) => b.price - a.price);
+    }
+
+    const updatedPagination = {
+      ...vehiclesPagination,
+      vehicles: sortedCars,
+    };
+
+    console.log(updatedPagination);
+
+    setVehiclesPagination(updatedPagination);
+  };
 
   if (loading) {
     return <p>Carregando...</p>;
@@ -39,14 +61,10 @@ export const InfoFilterPrice = () => {
             fontWeight={"500"}
             border={"none"}
             defaultValue={"Relevância"}
+            onChange={handleSortChange}
           >
-            <option value="option1">Relevância </option>
-            <option value="option2">Menor preço</option>
-            <option value="option3">Maior preço</option>
-            <option value="option3">Mais antigos</option>
-            <option value="option3">Mais novos</option>
-            <option value="option3">Menor km</option>
-            <option value="option3">Maior km</option>
+            <option value="Menor preço">Menor preço</option>
+            <option value="Maior preço">Maior preço</option>
           </Select>
         </Flex>
       </Flex>

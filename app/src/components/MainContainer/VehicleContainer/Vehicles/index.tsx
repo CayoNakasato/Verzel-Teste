@@ -2,6 +2,7 @@ import { Divider, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import { IVehicleCreate } from "../../../../interfaces/Vehicle/vehicle.interface";
 
 export const Vehicles = ({ vehicles }: { vehicles: IVehicleCreate[] }) => {
+
   return (
     <>
       {vehicles.map((car) => {

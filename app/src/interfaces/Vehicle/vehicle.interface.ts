@@ -6,6 +6,9 @@ export interface IVehicleContextData {
   updateVehicle: (data: IVehicleUpdate, vehicleId: string) => Promise<void>;
   vehicles: IVehicleCreate[];
   vehiclesPagination: IVehiclePagination;
+  setVehiclesPagination: React.Dispatch<
+    React.SetStateAction<IVehiclePagination>
+  >;
 }
 
 export interface IVehiclePagination {
