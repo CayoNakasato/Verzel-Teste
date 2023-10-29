@@ -1,6 +1,7 @@
 import {
   IVehicleContextData,
   IVehicleCreate,
+  IVehiclePagination,
   IVehicleUpdate,
 } from "../interfaces/Vehicle/vehicle.interface";
 import { createContext, useState } from "react";
@@ -19,6 +20,14 @@ export const VehicleProvider = ({ children }: ProviderData) => {
     [] as IVehicleCreate[]
   );
 
+  const [vehiclesPagination, setVehiclesPagination] =
+    useState<IVehiclePagination>({
+      totalItems: 0,
+      currentPage: 1,
+      limit: 10,
+      vehicles: [],
+    });
+
   const createVehicle = async (data: IVehicleCreate) => {
     api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
@@ -35,11 +44,22 @@ export const VehicleProvider = ({ children }: ProviderData) => {
   };
 
   const getVehicles = async () => {
-    // console.log(token);
-    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
     await api.get("/vehicles").then((res) => {
       setVehicles(res.data);
+    });
+  };
+
+  const getVehiclesPerPage = async (currentPage: number) => {
+    if(currentPage === undefined){
+      return
+    }
+    await api.get(`/vehicles/pagination/?page=${currentPage}`).then((res) => {
+      setVehiclesPagination({
+        totalItems: res.data.totalItems,
+        currentPage: res.data.currentPage,
+        limit: res.data.limit,
+        vehicles: res.data.vehicles,
+      });
     });
   };
 
@@ -78,6 +98,8 @@ export const VehicleProvider = ({ children }: ProviderData) => {
         getVehicles,
         deleteVehicle,
         updateVehicle,
+        getVehiclesPerPage,
+        vehiclesPagination,
         vehicles,
       }}
     >

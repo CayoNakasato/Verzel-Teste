@@ -1,8 +1,17 @@
 export interface IVehicleContextData {
   createVehicle: (data: IVehicleCreate) => void;
   getVehicles: () => Promise<void>;
+  getVehiclesPerPage: (currentPage: number) => Promise<void>;
   deleteVehicle: (vehicleId: string) => Promise<void>;
   updateVehicle: (data: IVehicleUpdate, vehicleId: string) => Promise<void>;
+  vehicles: IVehicleCreate[];
+  vehiclesPagination: IVehiclePagination;
+}
+
+export interface IVehiclePagination {
+  totalItems: number;
+  currentPage: number;
+  limit: number;
   vehicles: IVehicleCreate[];
 }
 
@@ -44,4 +53,9 @@ export interface EditeModalProps {
 
 export interface CreateModalProps {
   closeModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface ChangePageButtonsProps {
+  vehiclesPagination: IVehiclePagination;
+  onPageChange: (newPage: number) => void;
 }

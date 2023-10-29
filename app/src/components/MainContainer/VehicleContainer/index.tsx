@@ -2,15 +2,41 @@ import { Flex, Text, Wrap } from "@chakra-ui/react";
 import { Vehicles } from "./Vehicles";
 import { ChangePageButtons } from "./ChangePageButtons";
 import { SearchFor } from "../SearchForContainer/SearchFor";
+import { useContext, useEffect, useState } from "react";
+import { VehicleContext } from "../../../contexts/vehicleContext";
 
 export const VehicleContainer = () => {
+  const { getVehiclesPerPage, vehiclesPagination } = useContext(VehicleContext);
+  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageChange = (newPage: number) => {
+    const pageToLoad = newPage || 1;
+    setCurrentPage(pageToLoad);
+  };
+
+  useEffect(() => {
+    const pageToLoad = currentPage || 1;
+    getVehiclesPerPage(pageToLoad).then(() => {
+      setLoading(false);
+    });
+  }, [currentPage]);
+
+  if (loading) {
+    return <p>Carregando...</p>;
+  }
+  const vehicles = vehiclesPagination.vehicles;
+
   return (
     <>
       <Flex flexDirection={"column"} gap={"30px"}>
         <Wrap spacing={"20px"} margin={"10px 0 10px 0"}>
-          <Vehicles />
+          <Vehicles vehicles={vehicles} />
         </Wrap>
-        <ChangePageButtons />
+        <ChangePageButtons
+          vehiclesPagination={vehiclesPagination}
+          onPageChange={handlePageChange}
+        />
         <Flex width={"95%"} margin={"0 auto"}>
           <Text fontSize={"13px"}>
             {" "}
@@ -19,7 +45,7 @@ export const VehicleContainer = () => {
             mensal de 2,46%. Termos e condições são aplicáveis.
           </Text>
         </Flex>
-        <SearchFor/>
+        <SearchFor />
       </Flex>
     </>
   );

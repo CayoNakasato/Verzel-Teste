@@ -1,6 +1,22 @@
 import { Flex, Select, Text } from "@chakra-ui/react";
+import { useContext, useEffect, useState } from "react";
+import { VehicleContext } from "../../../../contexts/vehicleContext";
 
 export const InfoFilterPrice = () => {
+  const { getVehiclesPerPage, vehiclesPagination } = useContext(VehicleContext);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getVehiclesPerPage();
+
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return <p>Carregando...</p>;
+  }
+  const totalItems = vehiclesPagination.totalItems;
+
   return (
     <>
       <Text padding={"20px 0 0 20px"} fontSize="sm">
@@ -12,7 +28,7 @@ export const InfoFilterPrice = () => {
         justifyContent={"space-between"}
         alignItems={"center"}
       >
-        <span>1.823 Resultados</span>
+        <span>{totalItems} Resultados</span>
 
         <Flex alignItems={"center"}>
           <span>Ordenar:</span>

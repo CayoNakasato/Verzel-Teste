@@ -11,7 +11,6 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   Link,
@@ -150,29 +149,11 @@ export const HamburguerNavLinks = () => {
                     <Button onClick={() => navigate("/dashboard")}>
                       Dashboard
                     </Button>
-                    <Button
-                      onClick={() => {
-                        localStorage.removeItem("@Token");
-                        navigate("/");
-                        toast.success("Log out realizado!");
-                      }}
-                    >
-                      Log out
-                    </Button>
                   </Flex>
                 </Box>
               ) : (
                 <Box>
                   <Flex flexDirection={"column"} gap="10px">
-                    <Button
-                      onClick={() => {
-                        localStorage.removeItem("@Token");
-                        navigate("/");
-                        toast.success("Log out realizado!");
-                      }}
-                    >
-                      Log out
-                    </Button>
                     <Button
                       colorScheme="teal"
                       justifyContent={"flex-start"}
@@ -260,13 +241,18 @@ export const HamburguerNavLinks = () => {
                   <Text>País</Text>
                   <Image src={brazil} width={"30px"} />
                 </Flex>
+                <Button
+                  onClick={() => {
+                    localStorage.removeItem("@Token");
+                    navigate("/");
+                    toast.success("Log out realizado!");
+                  }}
+                >
+                  Log out
+                </Button>
               </Flex>
             </Flex>
           </ModalBody>
-
-          <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </>
