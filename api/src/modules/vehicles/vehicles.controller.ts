@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   HttpCode,
+  Query,
 } from '@nestjs/common';
 import { VehiclesService } from './vehicles.service';
 import { CreateVehicleDto } from './dto/create-vehicle.dto';
@@ -22,8 +23,15 @@ export class VehiclesController {
   }
 
   @Get()
-  findAll() {
-    return this.vehiclesService.findAll();
+  async findAll() {
+    const result = await this.vehiclesService.findAll();
+    return result;
+  }
+
+  @Get('/pagination')
+  async findAllPagination(@Query('page') page = 1, @Query('limit') limit = 5) {
+    const result = await this.vehiclesService.findAllPagination(page, limit);
+    return result;
   }
 
   @Get(':id')

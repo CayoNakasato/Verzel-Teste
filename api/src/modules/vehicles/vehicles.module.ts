@@ -10,10 +10,6 @@ import { IsAdminMiddleware } from 'src/middlewares/isAdmin.middleware';
 })
 export class VehiclesModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).forRoutes({
-      path: 'vehicles',
-      method: RequestMethod.GET,
-    });
     consumer.apply(AuthMiddleware, IsAdminMiddleware).forRoutes(
       {
         path: 'vehicles',

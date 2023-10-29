@@ -30,10 +30,27 @@ export class VehiclesService {
     return vehicle;
   }
 
-  findAll() {
-    const vehicles = this.prisma.vehicle.findMany();
+  async findAll() {
+    const vehicles = await this.prisma.vehicle.findMany();
 
     return vehicles;
+  }
+
+  async findAllPagination(page = 1, limit = 5) {
+    const skip = (page - 1) * limit;
+    const vehicles = await this.prisma.vehicle.findMany({
+      skip,
+      take: limit,
+    });
+
+    const totalItems = await this.prisma.vehicle.count();
+
+    return {
+      vehicles: vehicles,
+      totalItems,
+      currentPage: page,
+      limit,
+    };
   }
 
   findOne(id: string) {
