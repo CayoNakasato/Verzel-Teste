@@ -65,3 +65,7 @@ export interface ChangePageButtonsProps {
   vehiclesPagination: IVehiclePagination;
   onPageChange: (newPage: number) => void;
 }
+
+export interface InfoFilterModalProps {
+  setFiltersModal: React.Dispatch<React.SetStateAction<string[]>>;
+}

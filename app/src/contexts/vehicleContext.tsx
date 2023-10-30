@@ -67,6 +67,10 @@ export const VehicleProvider = ({ children }: ProviderData) => {
           currentPage: currentPage,
           totalItems: res.data.totalItems,
         });
+
+        const totalItems = res.data.totalItems;
+
+        return totalItems;
       });
   };
 

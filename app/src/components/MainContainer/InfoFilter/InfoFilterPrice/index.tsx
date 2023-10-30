@@ -11,7 +11,7 @@ export const InfoFilterPrice = () => {
     getVehiclesPerPage(1, "desc");
 
     setLoading(false);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -55,11 +55,11 @@ export const InfoFilterPrice = () => {
           <span>Ordenar:</span>
 
           <Select
-            placeholder="Select option"
+            placeholder="Maior preço"
             color={"blue"}
             fontWeight={"500"}
             border={"none"}
-            defaultValue={"Relevância"}
+            defaultValue={"Maior preço"}
             onChange={handleSortChange}
           >
             <option value="Menor preço">Menor preço</option>

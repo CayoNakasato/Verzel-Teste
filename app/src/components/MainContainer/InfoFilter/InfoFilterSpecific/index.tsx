@@ -1,3 +1,4 @@
+import { useContext, useState, useEffect } from "react";
 import {
   Button,
   Flex,
@@ -8,25 +9,43 @@ import {
   ModalHeader,
   ModalOverlay,
   Stack,
+  Text,
+  Wrap,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import { InfoFilterModal } from "../InfoFilterModal";
+import { VehicleContext } from "../../../../contexts/vehicleContext";
 
 export const InfoFilterSpecific = () => {
-  const filters = ["Localização", "Marca e Modelo", "Ano", "+ Filtros"];
+  const { getVehicles, getVehiclesPerPage } = useContext(VehicleContext);
+
+  const filtersTopic = ["Localização", "Marca e Modelo", "Ano", "+ Filtros"];
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [size, setSize] = useState("md");
+  const [size, setSize] = useState<string>("md");
+  const [filtersModal, setFiltersModal] = useState<string[]>([]);
 
   const handleSizeClick = (newSize: string) => {
     setSize(newSize);
     onOpen();
   };
 
+  const handleFilters = (filterRemove: string) => {
+    const updatedFilters = filtersModal.filter(
+      (filter) => filter !== filterRemove
+    );
+    setFiltersModal(updatedFilters);
+  };
+
+  useEffect(() => {
+    getVehiclesPerPage(1, "desc");
+    getVehicles("desc");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
-      <Flex padding={"20px"}>
+      <Flex padding={"20px"} flexDirection={"column"} gap={"20px"}>
         <Stack
           spacing={4}
           maxWidth={"90%"}
@@ -34,7 +53,7 @@ export const InfoFilterSpecific = () => {
           align="center"
           overflowX={"auto"}
         >
-          {filters.map((filter, index) => {
+          {filtersTopic.map((filter, index) => {
             return (
               <Flex
                 key={index}
@@ -58,11 +77,9 @@ export const InfoFilterSpecific = () => {
                   <ModalOverlay />
                   <ModalContent overflowY="scroll">
                     <ModalHeader>Filtros</ModalHeader>
-
                     <ModalCloseButton />
-
-                    <ModalBody >
-                      <InfoFilterModal />
+                    <ModalBody>
+                      <InfoFilterModal setFiltersModal={setFiltersModal} />
                     </ModalBody>
                   </ModalContent>
                 </Modal>
@@ -70,6 +87,33 @@ export const InfoFilterSpecific = () => {
             );
           })}
         </Stack>
+        <Wrap gap={"10px"}>
+          {filtersModal.length != 0 ? (
+            <>
+              {filtersModal.map((filter, index) => {
+                return (
+                  <Flex
+                    key={index}
+                    alignItems={"center"}
+                    backgroundColor={"gray.200"}
+                    borderRadius={"10px"}
+                  >
+                    {" "}
+                    <Text padding={"5px"}>{filter}</Text>
+                    <Button
+                      variant={"ghost"}
+                      onClick={() => handleFilters(filter)}
+                    >
+                      X
+                    </Button>
+                  </Flex>
+                );
+              })}
+            </>
+          ) : (
+            ""
+          )}
+        </Wrap>
       </Flex>
     </>
   );

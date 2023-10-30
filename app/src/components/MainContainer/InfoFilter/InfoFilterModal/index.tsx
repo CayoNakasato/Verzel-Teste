@@ -11,12 +11,14 @@ import {
   RangeSliderFilledTrack,
   RangeSliderThumb,
   RangeSliderTrack,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { moreSearchOptions } from "../../../../data/constants";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { InfoFilterModalProps } from "../../../../interfaces/Vehicle/vehicle.interface";
 
-export const InfoFilterModal = () => {
+export const InfoFilterModal = ({ setFiltersModal }: InfoFilterModalProps) => {
   const [sliderValueKm, setSliderValueKm] = useState([120, 240]);
   const [sliderValuePrice, setSliderValuePrice] = useState([5000, 100000]);
 
@@ -26,6 +28,11 @@ export const InfoFilterModal = () => {
 
   const handleSliderChangePrice = (newValue: [number, number]) => {
     setSliderValuePrice(newValue);
+  };
+
+  const handleButtonClick = (filter: string) => {
+    setFiltersModal((prevFilters: string[]) => [...prevFilters, filter]);
+    toast.success("Filtro adicionado");
   };
 
   return (
@@ -46,7 +53,12 @@ export const InfoFilterModal = () => {
                 {opt.subOptions ? (
                   opt.subOptions.map((subOpt, subIndex) => (
                     <Flex justifyContent={"center"} key={subIndex}>
-                      <Button variant={"ghost"}>{subOpt}</Button>
+                      <Button
+                        variant={"ghost"}
+                        onClick={() => handleButtonClick(subOpt)}
+                      >
+                        {subOpt}
+                      </Button>
                     </Flex>
                   ))
                 ) : opt.name === "Preço" ? (

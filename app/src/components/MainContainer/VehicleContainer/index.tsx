@@ -5,9 +5,9 @@ import { SearchFor } from "../SearchForContainer/SearchFor";
 import { useContext, useEffect, useState } from "react";
 import { VehicleContext } from "../../../contexts/vehicleContext";
 
-
 export const VehicleContainer = () => {
   const { getVehiclesPerPage, vehiclesPagination } = useContext(VehicleContext);
+
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -33,7 +33,7 @@ export const VehicleContainer = () => {
     <>
       <Flex flexDirection={"column"} gap={"30px"}>
         <Wrap spacing={"20px"} margin={"10px 0 10px 0"}>
-          <Vehicles vehicles ={vehicles} />
+          <Vehicles vehicles={vehicles} />
         </Wrap>
         <ChangePageButtons
           vehiclesPagination={vehiclesPagination}

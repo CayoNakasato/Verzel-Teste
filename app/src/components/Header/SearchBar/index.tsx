@@ -21,7 +21,7 @@ export const SearchBar = () => {
   useEffect(() => {
     getVehiclesPerPage(1, "desc");
     getVehicles("desc");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -37,6 +37,8 @@ export const SearchBar = () => {
     );
 
     if (searchTerm === "") {
+      getVehiclesPerPage(1, "desc");
+
       const updatedPagination: IVehiclePagination = {
         vehicles: vehiclesPagination.vehicles,
         currentPage: vehiclesPagination.currentPage,
@@ -50,7 +52,7 @@ export const SearchBar = () => {
     const updatedPagination: IVehiclePagination = {
       vehicles: filteredCars,
       currentPage: vehiclesPagination.currentPage,
-      totalItems: vehiclesPagination.totalItems,
+      totalItems: filteredCars.length,
       limit: vehiclesPagination.limit,
     };
 

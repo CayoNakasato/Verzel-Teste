@@ -16,7 +16,7 @@ export const ChangePageButtons: React.FC<ChangePageButtonsProps> = ({
   const totalPages = Math.ceil(totalItems / limit);
 
   const scrollPageToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" }); // Rola a página para o topo com animação suave
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handlePreviousPage = () => {
