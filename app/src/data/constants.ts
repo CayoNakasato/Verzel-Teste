@@ -158,3 +158,7 @@ export const moreSearchOptions: SearchOption[] = [
     subOptions: ["Flex", "Gasolina", "Gasolina Regular", "Diesel"],
   },
 ];
+
+export const infoFilterVehicleModelOption: string[] = [
+  "HatchBack", "Sedan", "SUV", "Pickup"
+]

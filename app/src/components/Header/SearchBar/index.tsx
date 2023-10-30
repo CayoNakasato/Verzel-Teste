@@ -64,10 +64,11 @@ export const SearchBar = () => {
       <Flex>
         <Flex
           alignItems={"center"}
-          width={"100%"}
+          width={["100%", "100%", "90%"]}
+          margin={"0 auto"}
           justifyContent={"space-evenly"}
           backgroundColor={"#3374DB"}
-          height={"5rem"}
+          height={["5rem", "7rem"]}
           boxShadow={"1px 5px 5px -3px rgba(0,0,0,0.2) inset"}
         >
           <Flex
@@ -76,16 +77,18 @@ export const SearchBar = () => {
             padding={"10px"}
             borderRadius={"5px"}
             width={"90%"}
-            height={"50px"}
+            height={["50px", "70px"]}
           >
             <Input
               type="text"
               placeholder="Busque por nome, modelo, marca..."
+              fontSize={["16px", "20px"]}
+              height={["20px"]}
               border={"none"}
               margin={"0 auto"}
               onChange={handleSearchChange}
             />
-            <FaSearch onClick={handleSearchClick} />
+            <FaSearch size={["25px"]} onClick={handleSearchClick} />
           </Flex>
         </Flex>
       </Flex>

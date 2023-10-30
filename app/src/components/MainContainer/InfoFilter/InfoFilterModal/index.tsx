@@ -36,14 +36,26 @@ export const InfoFilterModal = ({ setFiltersModal }: InfoFilterModalProps) => {
   };
 
   return (
-    <Flex gap={"10px"} flexDirection={"column"} maxHeight="700px">
-      <Accordion width={"100%"}>
+    <Flex
+      gap={"10px"}
+      flexDirection={"column"}
+      maxHeight="700px"
+      width={"80%"}
+      overflowX={"auto"}
+    >
+      <Accordion width={"100%"} allowMultiple>
         {moreSearchOptions.map((opt, index) => {
           return (
             <AccordionItem key={index} width={"95%"}>
               <h2>
                 <AccordionButton>
-                  <Box as="span" flex="1" textAlign="left">
+                  <Box
+                    as="span"
+                    flex="1"
+                    textAlign="left"
+                    fontWeight={"400"}
+                    fontSize={["md", "xl"]}
+                  >
                     {opt.name}
                   </Box>
                   <AccordionIcon />
@@ -56,6 +68,8 @@ export const InfoFilterModal = ({ setFiltersModal }: InfoFilterModalProps) => {
                       <Button
                         variant={"ghost"}
                         onClick={() => handleButtonClick(subOpt)}
+                        fontWeight={"400"}
+                        fontSize={["md", "xl"]}
                       >
                         {subOpt}
                       </Button>

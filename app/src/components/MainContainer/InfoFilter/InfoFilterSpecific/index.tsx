@@ -69,20 +69,10 @@ export const InfoFilterSpecific = () => {
                   backgroundColor={"#E9EEF7"}
                   color={"#3374DB"}
                   minWidth={"100%"}
+                  fontSize={{ base: "sm", md: "lg" }}
                 >
                   {filter}
                 </Button>
-
-                <Modal onClose={onClose} size={"full"} isOpen={isOpen}>
-                  <ModalOverlay />
-                  <ModalContent overflowY="scroll">
-                    <ModalHeader>Filtros</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                      <InfoFilterModal setFiltersModal={setFiltersModal} />
-                    </ModalBody>
-                  </ModalContent>
-                </Modal>
               </Flex>
             );
           })}
@@ -99,7 +89,9 @@ export const InfoFilterSpecific = () => {
                     borderRadius={"10px"}
                   >
                     {" "}
-                    <Text padding={"5px"}>{filter}</Text>
+                    <Text padding={"5px"} fontSize={{ base: "sm", md: "lg" }}>
+                      {filter}
+                    </Text>
                     <Button
                       variant={"ghost"}
                       onClick={() => handleFilters(filter)}
@@ -114,6 +106,18 @@ export const InfoFilterSpecific = () => {
             ""
           )}
         </Wrap>
+        <Modal onClose={onClose} size={"full"} isOpen={isOpen}>
+          <ModalOverlay />
+          <ModalContent overflowY="scroll">
+            <ModalHeader fontSize={{ base: "sm", md: "2xl" }}>
+              Filtros
+            </ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <InfoFilterModal setFiltersModal={setFiltersModal} />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
       </Flex>
     </>
   );

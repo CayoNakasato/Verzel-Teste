@@ -44,18 +44,28 @@ export const ChangePageButtons: React.FC<ChangePageButtonsProps> = ({
   };
   return (
     <>
-      <Flex alignItems={"center"} gap={"10px"} margin={"0 auto"}>
-        <Button variant={"ghost"} onClick={handleFirstPage}>
+      <Flex
+        alignItems={"center"}
+        gap={"10px"}
+        margin={"0 auto"}
+        padding={"30px"}
+      >
+        <Button
+          variant={"ghost"}
+          onClick={handleFirstPage}
+          fontSize={{ base: "sm", md: "xl" }}
+        >
           <FaAngleDoubleLeft />
         </Button>
         <Button
           backgroundColor={"black"}
           color={"white"}
           onClick={handlePreviousPage}
+          fontSize={{ base: "sm", md: "xl" }}
         >
           <FaAngleLeft />
         </Button>
-        <Text fontWeight={"600"}>
+        <Text fontWeight={"600"} fontSize={{ base: "sm", md: "xl" }}>
           {" "}
           {currentPage} de {totalPages}
         </Text>
@@ -63,10 +73,15 @@ export const ChangePageButtons: React.FC<ChangePageButtonsProps> = ({
           backgroundColor={"black"}
           color={"white"}
           onClick={handleNextPage}
+          fontSize={{ base: "sm", md: "lg" }}
         >
           <FaAngleRight />
         </Button>
-        <Button variant={"ghost"} onClick={handleLastPage}>
+        <Button
+          variant={"ghost"}
+          onClick={handleLastPage}
+          fontSize={{ base: "sm", md: "lg" }}
+        >
           <FaAngleDoubleRight />
         </Button>
       </Flex>

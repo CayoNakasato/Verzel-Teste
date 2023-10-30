@@ -6,6 +6,7 @@ import { VehicleContainer } from "./VehicleContainer";
 import { Footer } from "../Footer";
 
 export const MainContainer = () => {
+  
   return (
     <Box backgroundColor={"#3374DB"}>
       <Header />

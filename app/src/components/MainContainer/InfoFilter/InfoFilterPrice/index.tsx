@@ -40,7 +40,7 @@ export const InfoFilterPrice = () => {
 
   return (
     <>
-      <Text padding={"20px 0 0 20px"} fontSize="sm">
+      <Text padding={"20px 0 0 20px"} fontSize={{ base: "sm", md: "lg" }}>
         CARROS USADOS
       </Text>
 
@@ -49,10 +49,10 @@ export const InfoFilterPrice = () => {
         justifyContent={"space-between"}
         alignItems={"center"}
       >
-        <span>{totalItems} Resultados</span>
+        <Text fontSize={{ base: "sm", md: "xl" }}>{totalItems} Resultados</Text>
 
         <Flex alignItems={"center"}>
-          <span>Ordenar:</span>
+          <Text fontSize={{ base: "sm", md: "xl" }}>Ordenar:</Text>
 
           <Select
             placeholder="Maior preço"
@@ -61,6 +61,7 @@ export const InfoFilterPrice = () => {
             border={"none"}
             defaultValue={"Maior preço"}
             onChange={handleSortChange}
+            fontSize={{ base: "sm", md: "lg" }}
           >
             <option value="Menor preço">Menor preço</option>
             <option value="Maior preço">Maior preço</option>

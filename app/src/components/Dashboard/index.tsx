@@ -43,6 +43,7 @@ export const Dashboard = () => {
               setCreateModalOpen(true);
               getUsers();
             }}
+            fontSize={{ base: "sm", md: "xl" }}
           >
             Add Vehicle
           </Button>
@@ -63,7 +64,7 @@ export const Dashboard = () => {
           </Modal>
 
           <Flex flexDirection={"column"} gap={"40px"}>
-            <Text fontSize={"lg"} fontWeight={"600"}>
+            <Text fontSize={{ base: "sm", md: "2xl" }} fontWeight={"600"}>
               Cars
             </Text>
             <CarsListContainer vehicles={vehicles} />

@@ -21,6 +21,8 @@ export const DeleteCarModal: React.FC<DeleteCarModalProps> = ({
           gap={"20px"}
           padding={"20px"}
           flexDirection={"column"}
+          fontWeight={"400"}
+          fontSize={["md", "xl"]}
         >
           <Text fontWeight={"600"}>
             When deleting this car, it will cease to exist in the store. Are you
@@ -32,10 +34,17 @@ export const DeleteCarModal: React.FC<DeleteCarModalProps> = ({
               colorScheme="blue"
               type="submit"
               onClick={deleteCar}
+              fontWeight={"400"}
+              fontSize={["md", "xl"]}
             >
               Delete Car
             </Button>
-            <Button width={"50%"} onClick={() => closeModal(false)}>
+            <Button
+              width={"50%"}
+              onClick={() => closeModal(false)}
+              fontWeight={"400"}
+              fontSize={["md", "xl"]}
+            >
               Cancel
             </Button>
           </Flex>

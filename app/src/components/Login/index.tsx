@@ -48,24 +48,36 @@ export const Login = () => {
         marginTop={"30px"}
         flexDirection={"column"}
         gap={"2rem"}
+        fontWeight={"400"}
+        fontSize={["md", "xl"]}
       >
-        <Heading as={"h1"} size={"lg"} margin={"0 auto"}>
+        <Heading as={"h1"} size={["lg"]} margin={"0 auto"}>
           Login
         </Heading>
         <FormControl isRequired as={"form"} onSubmit={handleSubmit(onSubmit)}>
           <Flex flexDirection={"column"} gap={"2rem"} alignItems={"center"}>
-            <Input id="email" placeholder="Email" {...register("email")} />
+            <Input
+              id="email"
+              placeholder="Email"
+              {...register("email")}
+              fontWeight={"400"}
+              fontSize={["md", "xl"]}
+              height={["50px"]}
+            />
 
             <InputGroup size="md">
               <Input
-                pr="4.5rem"
+                pr="5rem"
                 type={showFirst ? "text" : "password"}
                 placeholder="Enter password"
                 id="password"
                 {...register("password")}
+                fontWeight={"400"}
+                fontSize={["md", "xl"]}
+                height={["50px"]}
               />
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleClick}>
+              <InputRightElement width="5rem" marginTop={"5px"}>
+                <Button h="1.75rem" size={["sm", "md"]} onClick={handleClick}>
                   {showFirst ? <FaEye /> : <FaEyeSlash />}
                 </Button>
               </InputRightElement>
@@ -76,10 +88,12 @@ export const Login = () => {
                 color={"blue"}
                 variant="grey2"
                 onClick={() => navigate("/register")}
+                fontWeight={"600"}
+                fontSize={["md", "xl"]}
               >
                 Esqueceu a senha?
               </Button>
-              <Text fontSize={"xs"}>
+              <Text fontSize={["xs", "md"]}>
                 Ao clicar em "Iniciar sessão" confirmo que li e aceito os{" "}
                 <Link color={"blue"}>Termos e Condições</Link> e{" "}
                 <Link color={"blue"}>Aviso de privacidade</Link> Kavak.
@@ -90,10 +104,16 @@ export const Login = () => {
                 type="submit"
                 width={"100%"}
                 margin={"0 auto"}
+                fontWeight={"700"}
+                fontSize={["md", "xl"]}
               >
                 Iniciar sessão
               </Button>
-              <Text color={"gray.500"} fontSize={"xs"}>
+              <Text
+                color={"gray.500"}
+                fontWeight={"400"}
+                fontSize={["md", "xl"]}
+              >
                 Ainda não possui conta?
               </Text>
               <Button
@@ -101,6 +121,8 @@ export const Login = () => {
                 width={"100%"}
                 color={"blue"}
                 variant="outline1"
+                fontWeight={"400"}
+                fontSize={["md", "xl"]}
               >
                 Cadastre-se aqui!
               </Button>

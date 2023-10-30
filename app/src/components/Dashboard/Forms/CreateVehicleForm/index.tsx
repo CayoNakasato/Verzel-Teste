@@ -40,15 +40,46 @@ export const CreateVehicleForm: React.FC<CreateModalProps> = ({
       <Flex flexDirection={"column"}>
         <FormControl isRequired as={"form"} onSubmit={handleSubmit(onSubmit)}>
           <Flex flexDirection={"column"} gap={"2rem"} alignItems={"center"}>
-            <Input id="name" placeholder="Name" {...register("name")} />
-            <Input id="brand" placeholder="Brand" {...register("brand")} />
-            <Input id="model" placeholder="Model" {...register("model")} />
-            <Input id="img" placeholder="Image Url" {...register("frontImg")} />
+            <Input
+              id="name"
+              placeholder="Name"
+              {...register("name")}
+              fontWeight={"400"}
+              fontSize={["md", "xl"]}
+              height={["50px", "70px"]}
+            />
+            <Input
+              id="brand"
+              placeholder="Brand"
+              {...register("brand")}
+              fontWeight={"400"}
+              fontSize={["md", "xl"]}
+              height={["50px", "70px"]}
+            />
+            <Input
+              id="model"
+              placeholder="Model"
+              {...register("model")}
+              fontWeight={"400"}
+              fontSize={["md", "xl"]}
+              height={["50px", "70px"]}
+            />
+            <Input
+              id="img"
+              placeholder="Image Url"
+              {...register("frontImg")}
+              fontWeight={"400"}
+              fontSize={["md", "xl"]}
+              height={["50px", "70px"]}
+            />
             <Input
               type="string"
               id="price"
               placeholder="Price"
               {...register("price")}
+              fontWeight={"400"}
+              fontSize={["md", "xl"]}
+              height={["50px", "70px"]}
             />
             <UserList users={users} register={register} />
             <Flex
@@ -57,10 +88,21 @@ export const CreateVehicleForm: React.FC<CreateModalProps> = ({
               gap={"20px"}
               padding={"20px"}
             >
-              <Button width={"50%"} colorScheme="blue" type="submit">
+              <Button
+                width={"50%"}
+                colorScheme="blue"
+                type="submit"
+                fontWeight={"600"}
+                fontSize={["md", "xl"]}
+              >
                 Add Car
               </Button>
-              <Button width={"50%"} onClick={() => closeModal(false)}>
+              <Button
+                width={"50%"}
+                onClick={() => closeModal(false)}
+                fontWeight={"600"}
+                fontSize={["md", "xl"]}
+              >
                 Cancel
               </Button>
             </Flex>

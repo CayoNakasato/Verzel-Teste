@@ -93,11 +93,11 @@ export const HamburguerNavLinks = () => {
               {!token || null ? (
                 <Box>
                   <Flex flexDirection={"column"} gap={"10px"}>
-                    <Heading as="h1" size={"md"}>
+                    <Heading as="h1" size={["md", "lg"]}>
                       Nós lhe damos as boas-vindas
                     </Heading>
 
-                    <Text fontSize={"md"}>
+                    <Text fontSize={["md", "lg"]}>
                       Crie uma conta ou faça o login para assumir o controle de
                       sua compra, venda ou financiamento.
                     </Text>
@@ -106,12 +106,13 @@ export const HamburguerNavLinks = () => {
                         color={"white"}
                         backgroundColor={"black"}
                         width={"95%"}
-                        fontWeight={"400"}
+                        fontWeight={["400", "600"]}
+                        fontSize={["md", "lg"]}
                       >
                         Cadastre-se
                       </Button>
                     </Link>
-                    <Text>
+                    <Text fontSize={["md", "lg"]}>
                       Já possui conta?{" "}
                       <Link href="/login" color={"blue"}>
                         Logue
@@ -126,7 +127,8 @@ export const HamburguerNavLinks = () => {
                       variant={"ghost"}
                       color={"black"}
                       gap={"10px"}
-                      fontWeight={"400"}
+                      fontWeight={["400", "600"]}
+                      fontSize={["md", "lg"]}
                     >
                       <FaShoppingCart /> Comprar Carro
                     </Button>
@@ -137,7 +139,8 @@ export const HamburguerNavLinks = () => {
                       variant={"ghost"}
                       color={"black"}
                       gap={"10px"}
-                      fontWeight={"400"}
+                      fontWeight={["400", "600"]}
+                      fontSize={["md", "lg"]}
                     >
                       <FaTag /> Vender Carro
                     </Button>
@@ -146,7 +149,11 @@ export const HamburguerNavLinks = () => {
               ) : decodedToken?.admin ? (
                 <Box>
                   <Flex flexDirection={"column"} gap="10px">
-                    <Button onClick={() => navigate("/dashboard")}>
+                    <Button
+                      onClick={() => navigate("/dashboard")}
+                      fontWeight={["400", "600"]}
+                      fontSize={["md", "lg"]}
+                    >
                       Dashboard
                     </Button>
                   </Flex>
@@ -160,7 +167,8 @@ export const HamburguerNavLinks = () => {
                       variant={"ghost"}
                       color={"black"}
                       gap={"10px"}
-                      fontWeight={"400"}
+                      fontWeight={["400", "600"]}
+                      fontSize={["md", "lg"]}
                     >
                       <FaShoppingCart /> Comprar Carro
                     </Button>
@@ -171,7 +179,8 @@ export const HamburguerNavLinks = () => {
                       variant={"ghost"}
                       color={"black"}
                       gap={"10px"}
-                      fontWeight={"400"}
+                      fontWeight={["400", "600"]}
+                      fontSize={["md", "lg"]}
                     >
                       <FaTag /> Vender Carro
                     </Button>
@@ -189,6 +198,7 @@ export const HamburguerNavLinks = () => {
                   color={"black"}
                   gap={"10px"}
                   fontWeight={"400"}
+                  fontSize={["md", "lg"]}
                 >
                   App Kavak
                 </Button>
@@ -197,14 +207,26 @@ export const HamburguerNavLinks = () => {
                   <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          flex="1"
+                          textAlign="left"
+                          fontWeight={"400"}
+                          fontSize={["md", "lg"]}
+                        >
                           Sobre nós
                         </Box>
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
                     <AccordionPanel>
-                      <Flex flexDirection={"column"} gap={"10px"}>
+                      <Flex
+                        flexDirection={"column"}
+                        gap={"10px"}
+                        fontWeight={"400"}
+                        fontSize={["md", "lg"]}
+                        marginLeft={"20px"}
+                      >
                         <Link>Onde estamos</Link>
                         <Link>Guia de preços</Link>
                         <Link>Blog</Link>
@@ -214,7 +236,13 @@ export const HamburguerNavLinks = () => {
                   <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          flex="1"
+                          textAlign="left"
+                          fontWeight={"400"}
+                          fontSize={["md", "lg"]}
+                        >
                           Ajuda
                         </Box>
                         <AccordionIcon />
@@ -223,12 +251,24 @@ export const HamburguerNavLinks = () => {
 
                     <AccordionPanel pb={4}>
                       <Link>
-                        <Flex alignItems={"center"} gap={"10px"}>
+                        <Flex
+                          alignItems={"center"}
+                          gap={"10px"}
+                          fontWeight={"400"}
+                          fontSize={["md", "lg"]}
+                          marginLeft={"20px"}
+                        >
                           <FaQuestionCircle /> Perguntas Frequentes
                         </Flex>
                       </Link>
                       <Link>
-                        <Flex alignItems={"center"} gap={"10px"}>
+                        <Flex
+                          alignItems={"center"}
+                          gap={"10px"}
+                          fontWeight={"400"}
+                          fontSize={["md", "lg"]}
+                          marginLeft={"20px"}
+                        >
                           <FaRocketchat /> Contato
                         </Flex>
                       </Link>
@@ -237,8 +277,11 @@ export const HamburguerNavLinks = () => {
                 </Accordion>
 
                 <Divider />
+
                 <Flex padding={"10px"} justifyContent={"space-between"}>
-                  <Text>País</Text>
+                  <Text fontWeight={"400"} fontSize={["md", "lg"]}>
+                    País
+                  </Text>
                   <Image src={brazil} width={"30px"} />
                 </Flex>
                 <Button
@@ -247,6 +290,8 @@ export const HamburguerNavLinks = () => {
                     navigate("/");
                     toast.success("Log out realizado!");
                   }}
+                  fontWeight={"400"}
+                  fontSize={["md", "lg"]}
                 >
                   Log out
                 </Button>

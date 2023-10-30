@@ -79,9 +79,23 @@ export const Register = () => {
         </Heading>
         <FormControl isRequired as={"form"} onSubmit={handleSubmit(onSubmit)}>
           <Flex flexDirection={"column"} gap={"2rem"} alignItems={"center"}>
-            <Input id="name" placeholder="Name" {...register("name")} />
+            <Input
+              id="name"
+              placeholder="Name"
+              {...register("name")}
+              fontWeight={"400"}
+              fontSize={["md", "xl"]}
+              height={["50px"]}
+            />
 
-            <Input id="email" placeholder="Email" {...register("email")} />
+            <Input
+              id="email"
+              placeholder="Email"
+              {...register("email")}
+              fontWeight={"400"}
+              fontSize={["md", "xl"]}
+              height={["50px"]}
+            />
 
             <InputGroup size="md">
               <Input
@@ -90,9 +104,12 @@ export const Register = () => {
                 placeholder="Enter password"
                 id="password"
                 {...register("password")}
+                fontWeight={"400"}
+                fontSize={["md", "xl"]}
+                height={["50px"]}
               />
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleClick}>
+              <InputRightElement width="5rem" marginTop={"5px"}>
+                <Button h="1.75rem" size={["sm", "md"]} onClick={handleClick}>
                   {showFirst ? <FaEye /> : <FaEyeSlash />}
                 </Button>
               </InputRightElement>
@@ -105,9 +122,16 @@ export const Register = () => {
                 placeholder="Confirm password"
                 id="confirmPassword"
                 {...register("confirmPassword")}
+                fontWeight={"400"}
+                fontSize={["md", "xl"]}
+                height={["50px"]}
               />
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleClickSecond}>
+              <InputRightElement width="5rem" marginTop={"5px"}>
+                <Button
+                  h="1.75rem"
+                  size={["sm", "md"]}
+                  onClick={handleClickSecond}
+                >
                   {showSecond ? <FaEye /> : <FaEyeSlash />}
                 </Button>
               </InputRightElement>
@@ -115,10 +139,20 @@ export const Register = () => {
 
             <RadioGroup onChange={handleRadioChange} value={selectedValue}>
               <Stack spacing={5} direction="row">
-                <Radio colorScheme="red" value="true">
+                <Radio
+                  colorScheme="red"
+                  value="true"
+                  fontWeight={"400"}
+                  size={["md", "lg"]}
+                >
                   Admin
                 </Radio>
-                <Radio colorScheme="green" value="false">
+                <Radio
+                  colorScheme="green"
+                  value="false"
+                  fontWeight={"400"}
+                  size={["md", "lg"]}
+                >
                   User
                 </Radio>
               </Stack>
@@ -129,10 +163,12 @@ export const Register = () => {
               type="submit"
               width={"60%"}
               margin={"0 auto%"}
+              fontWeight={"400"}
+              fontSize={["md", "xl"]}
             >
               Cadastrar-se
             </Button>
-            <Text>
+            <Text fontWeight={"400"} fontSize={["md", "xl"]}>
               Já possui conta?{" "}
               <Link href="/login" color={"blue"}>
                 Logue

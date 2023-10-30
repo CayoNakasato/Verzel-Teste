@@ -34,49 +34,73 @@ export const EditCarModal: React.FC<EditeModalProps> = ({
   return (
     <>
       <Flex flexDirection={"column"}>
-        <FormControl isRequired as={"form"} onSubmit={handleSubmit(onSubmit)}>
+        <FormControl
+          isRequired
+          as={"form"}
+          onSubmit={handleSubmit(onSubmit)}
+          width={"100%"}
+        >
           <Flex flexDirection={"column"} gap={"10px"} alignItems={"center"}>
-            <Flex flexDirection={"column"} gap={"5px"}>
-              <Text>Name:</Text>
-              <Input id="name" defaultValue={car.name} {...register("name")} />
+            <Flex flexDirection={"column"} gap={"5px"} width={"100%"}>
+              <Text fontSize={["md", "xl"]}>Name: </Text>
+              <Input
+                id="name"
+                defaultValue={car.name}
+                {...register("name")}
+                fontWeight={"400"}
+                fontSize={["md", "xl"]}
+                height={["50px", "70px"]}
+              />
             </Flex>
-            <Flex flexDirection={"column"} gap={"5px"}>
-              <Text>Brand:</Text>
+            <Flex flexDirection={"column"} gap={"5px"} width={"100%"}>
+              <Text fontSize={["md", "xl"]}>Brand:</Text>
 
               <Input
                 id="brand"
                 defaultValue={car.brand}
                 {...register("brand")}
+                fontWeight={"400"}
+                fontSize={["md", "xl"]}
+                height={["50px", "70px"]}
               />
             </Flex>
 
-            <Flex flexDirection={"column"} gap={"5px"}>
-              <Text>Model:</Text>
+            <Flex flexDirection={"column"} gap={"5px"} width={"100%"}>
+              <Text fontSize={["md", "xl"]}>Model:</Text>
 
               <Input
                 id="model"
                 defaultValue={car.model}
                 {...register("model")}
+                fontWeight={"400"}
+                fontSize={["md", "xl"]}
+                height={["50px", "70px"]}
               />
             </Flex>
 
-            <Flex flexDirection={"column"} gap={"5px"}>
-              <Text>Url:</Text>
+            <Flex flexDirection={"column"} gap={"5px"} width={"100%"}>
+              <Text fontSize={["md", "xl"]}>Url:</Text>
 
               <Input
                 id="img"
                 defaultValue={car.frontImg}
                 {...register("frontImg")}
+                fontWeight={"400"}
+                fontSize={["md", "xl"]}
+                height={["50px", "70px"]}
               />
             </Flex>
-            <Flex flexDirection={"column"} gap={"5px"}>
-              <Text>Price:</Text>
+            <Flex flexDirection={"column"} gap={"5px"} width={"100%"}>
+              <Text fontSize={["md", "xl"]}>Price:</Text>
 
               <Input
                 type="number"
                 id="price"
                 defaultValue={car.price}
                 {...register("price")}
+                fontWeight={"400"}
+                fontSize={["md", "xl"]}
+                height={["50px", "70px"]}
               />
             </Flex>
 
