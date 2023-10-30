@@ -33,8 +33,9 @@ export const VehicleProvider = ({ children }: ProviderData) => {
 
     await api
       .post("/vehicles", data)
-      .then((resp) => {
-        const newVehicle = resp.data;
+      .then((res) => {
+        const newVehicle = res.data;
+        console.log(res.data);
 
         setVehicles((prevVehicles) => [...prevVehicles, newVehicle]);
 
@@ -86,7 +87,6 @@ export const VehicleProvider = ({ children }: ProviderData) => {
     await api
       .patch(`/vehicles/${vehicleId}`, data)
       .then((resp) => {
-        console.log(resp);
         setVehicles((prevVehicles) =>
           prevVehicles.map((vehicle) =>
             vehicle.id === vehicleId ? resp.data : vehicle

@@ -15,7 +15,7 @@ interface IData {
 
 interface SearchOptionsInterface {
   name: string;
-  subOptions: string[];
+  subOptions?: string[];
 }
 
 export const SearchForOption = ({ data }: IData) => {
@@ -33,9 +33,13 @@ export const SearchForOption = ({ data }: IData) => {
           </h2>
           <AccordionPanel pb={4}>
             <Flex flexDirection={"column"} gap={"10px"}>
-              {data.subOptions.map((opt, index) => {
-                return <Link key={index}>{opt}</Link>;
-              })}
+              {
+                data ? data?.subOptions.map((opt, index) => {
+                  return <Link key={index}>{opt}</Link>;
+                })
+                :
+                <span>Ops! Algo deu errado</span>
+              }
             </Flex>
           </AccordionPanel>
         </AccordionItem>

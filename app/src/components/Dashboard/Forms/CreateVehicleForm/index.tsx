@@ -30,6 +30,7 @@ export const CreateVehicleForm: React.FC<CreateModalProps> = ({
 
   const onSubmit = async (data: IVehicleCreate) => {
     schema.parse(data);
+
     createVehicle(data);
     closeModal(false);
   };
@@ -44,7 +45,7 @@ export const CreateVehicleForm: React.FC<CreateModalProps> = ({
             <Input id="model" placeholder="Model" {...register("model")} />
             <Input id="img" placeholder="Image Url" {...register("frontImg")} />
             <Input
-              type="number"
+              type="string"
               id="price"
               placeholder="Price"
               {...register("price")}

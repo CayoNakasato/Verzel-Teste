@@ -11,6 +11,7 @@ export const InfoFilterPrice = () => {
     getVehiclesPerPage(1, "desc");
 
     setLoading(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

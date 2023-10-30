@@ -28,7 +28,7 @@ export interface IVehicleCreate {
   model: string;
   frontImg: string;
   userId: string;
-  price: number;
+  price: string;
 }
 
 export interface IVehicleUpdate {
@@ -36,7 +36,7 @@ export interface IVehicleUpdate {
   brand?: string;
   model?: string;
   frontImg?: string;
-  price?: number;
+  price?: string;
 }
 
 export interface CarsListProps {

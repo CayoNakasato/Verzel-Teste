@@ -2,7 +2,6 @@ import { Divider, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import { IVehicleCreate } from "../../../../interfaces/Vehicle/vehicle.interface";
 
 export const Vehicles = ({ vehicles }: { vehicles: IVehicleCreate[] }) => {
-
   return (
     <>
       {vehicles.map((car) => {
@@ -27,7 +26,7 @@ export const Vehicles = ({ vehicles }: { vehicles: IVehicleCreate[] }) => {
                 R$
               </Text>
               <Text fontSize={"2xl"} fontWeight={"600"}>
-                {car.price.toFixed(2)}
+                {car.price}
               </Text>
             </Flex>
           </Flex>

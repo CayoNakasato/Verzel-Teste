@@ -24,7 +24,7 @@ export const CarCard: React.FC<CarCardProps> = ({ car }) => {
 
   return (
     <>
-      <ListItem key={car.id}>
+      <ListItem key={car.id} borderRadius={"10px"}>
         <Flex
           gap={"10px"}
           width={"90%"}
@@ -32,18 +32,13 @@ export const CarCard: React.FC<CarCardProps> = ({ car }) => {
           margin={"0 auto"}
           borderRadius={"10px"}
         >
-          <Image
-            src={car.frontImg}
-            width={["100px"]}
-            borderTopLeftRadius={"10px"}
-            borderBottomLeftRadius={"10px"}
-          />
+          <Image src={car.frontImg} width={["100px"]} borderRadius={"10px"} />
           <Flex flexDirection={["column"]} padding={"10px"}>
             <Text fontWeight={"600"}>
               {car.brand} {car.model}
             </Text>
             <Flex flexDirection={"column"}>
-              <Text fontWeight={"600"}>R${car.price.toFixed(2)}</Text>
+              <Text fontWeight={"600"}>R${car.price}</Text>
               <Flex gap={"20px"}>
                 <Button onClick={() => setEditModalOpen(true)}>
                   <FaEdit size={10} />

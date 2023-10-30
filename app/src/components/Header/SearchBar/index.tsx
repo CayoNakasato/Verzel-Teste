@@ -21,6 +21,7 @@ export const SearchBar = () => {
   useEffect(() => {
     getVehiclesPerPage(1, "desc");
     getVehicles("desc");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {

@@ -5,7 +5,6 @@ import {
 } from "../../../../../interfaces/Vehicle/vehicle.interface";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-
 import z from "zod";
 import { VehicleContext } from "../../../../../contexts/vehicleContext";
 
@@ -29,6 +28,7 @@ export const EditCarModal: React.FC<EditeModalProps> = ({
     const vehicleId = car.id;
     schema.parse(data);
     updateVehicle(data, vehicleId);
+    closeModal(false);
   };
 
   return (
@@ -75,7 +75,7 @@ export const EditCarModal: React.FC<EditeModalProps> = ({
               <Input
                 type="number"
                 id="price"
-                defaultValue={car.price.toString()}
+                defaultValue={car.price}
                 {...register("price")}
               />
             </Flex>
