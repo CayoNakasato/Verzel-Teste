@@ -1,4 +1,4 @@
-import { IsInt, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreateVehicleDto {
   @IsString()
@@ -19,6 +19,6 @@ export class CreateVehicleDto {
   @IsString()
   userId: string;
 
-  @IsInt()
+  @IsString()
   price: string;
 }

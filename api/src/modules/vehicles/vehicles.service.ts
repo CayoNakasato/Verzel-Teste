@@ -19,13 +19,20 @@ export class VehiclesService {
     if (!user) {
       throw new HttpException('User not found', 404);
     }
-    const priceAsInt = parseInt(data.price, 10);
+
+    const prismaCreateData: Prisma.VehicleCreateInput = {
+      name: data.name,
+      brand: data.brand,
+      model: data.model,
+      frontImg: data.frontImg,
+      user: {
+        connect: { id: user.id }, // Assuming there is a relation between Vehicle and User models
+      },
+      price: data.price,
+    };
 
     const vehicle = await this.prisma.vehicle.create({
-      data: {
-        ...data,
-        price: priceAsInt,
-      },
+      data: prismaCreateData,
     });
     return vehicle;
   }
@@ -86,13 +93,9 @@ export class VehiclesService {
       throw new HttpException('Vehicle not found', 404);
     }
 
-    const priceAsInt = updateVehicleDto.price
-      ? parseInt(updateVehicleDto.price, 10)
-      : undefined;
-
     const updatedVehicle = await this.prisma.vehicle.update({
       where: { id },
-      data: { ...existingVehicle, ...updateVehicleDto, price: priceAsInt },
+      data: { ...existingVehicle, ...updateVehicleDto },
     });
 
     return updatedVehicle;
