@@ -1,34 +1,29 @@
-import { Exclude, Type } from 'class-transformer';
-import {
-  IsString,
-  IsEmail,
-  IsBoolean,
-  IsOptional,
-  IsArray,
-  ValidateNested,
-} from 'class-validator';
-import { CreateVehicleDto } from 'src/modules/vehicles/dto/create-vehicle.dto';
+import { ApiProperty } from '@nestjs/swagger';
+import { Exclude } from 'class-transformer';
+import { IsString, IsEmail, IsBoolean, IsNotEmpty } from 'class-validator';
 
 export class CreateUserDto {
   @IsString()
   readonly id?: string;
 
   @IsString()
+  @ApiProperty()
+  @IsNotEmpty()
   name: string;
 
   @IsEmail()
+  @ApiProperty()
+  @IsNotEmpty()
   email: string;
 
   @IsString()
   @Exclude({ toPlainOnly: true })
+  @ApiProperty()
+  @IsNotEmpty()
   password: string;
 
   @IsBoolean()
+  @ApiProperty()
+  @IsNotEmpty()
   admin: boolean;
-
-  @IsOptional()
-  @IsArray()
-  @ValidateNested({ each: true })
-  @Type(() => CreateVehicleDto)
-  vehicles?: CreateVehicleDto[];
 }

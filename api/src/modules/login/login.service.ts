@@ -31,7 +31,6 @@ export class LoginService {
       {
         admin: user.admin,
         id: user.id,
-        name: user.name,
       },
       process.env.SECRET_KEY as string,
       {
