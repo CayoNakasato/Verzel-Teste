@@ -1,22 +1,46 @@
-import { Divider, Flex, Image} from "@chakra-ui/react";
+import { Divider, Flex, Image, useBreakpointValue } from "@chakra-ui/react";
 import footerLogo from "../../assets/logofooter.png";
 import { SocialMediaButtons } from "./SocialMediasButtons";
 import { LinksToTopics } from "./LinksToTopics";
 import { FooterInfo } from "./FooterInfo";
 
 export const Footer = () => {
+  const breakpointValue = useBreakpointValue({
+    sm: "375px",
+    md: "768px",
+    lg: "1920px",
+  });
+
   return (
     <>
-      <Flex backgroundColor={"black"} flexDirection={["column"]} gap={"10px"}>
-        <Image src={footerLogo} width={["150px", "200px"]} />
+      <Flex backgroundColor={"black"} flexDirection={["column"]}>
+        {breakpointValue === "1920px" ? (
+          <Flex flexDirection={"column"} width={"70%"} margin={"0 auto"}>
+            <Flex justifyContent={"space-between"}>
+              <Image src={footerLogo} width={["150px", "200px"]} />
 
-        <LinksToTopics />
+              <LinksToTopics />
+            </Flex>
 
-        <SocialMediaButtons />
+            <SocialMediaButtons />
 
-        <Divider width={"93%"} margin={"0 auto"} borderWidth={"1px"} />
+            <Divider width={"93%"} margin={"0 auto"} borderWidth={"1px"} />
 
-        <FooterInfo />
+            <FooterInfo />
+          </Flex>
+        ) : (
+          <Flex flexDirection={"column"}>
+            <Image src={footerLogo} width={["150px", "200px"]} />
+
+            <LinksToTopics />
+
+            <SocialMediaButtons />
+
+            <Divider width={"93%"} margin={"0 auto"} borderWidth={"1px"} />
+
+            <FooterInfo />
+          </Flex>
+        )}
       </Flex>
     </>
   );

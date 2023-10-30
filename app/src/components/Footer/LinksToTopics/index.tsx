@@ -23,16 +23,11 @@ export const LinksToTopics = () => {
   const topicsMdOne = topics.slice(0, 5);
   const topicsMdTwo = topics.slice(5, 10);
 
-
   return (
     <>
       <Flex padding={"20px"}>
         {breakpointValue === undefined ? (
-          <Flex
-            flexDirection={"column"}
-            padding={"5px"}
-            gap={"10px"}
-          >
+          <Flex flexDirection={"column"} padding={"5px"} gap={"10px"}>
             {topics.map((topic, index) => {
               return (
                 <Link
@@ -97,8 +92,23 @@ export const LinksToTopics = () => {
             </Flex>
           </Flex>
         ) : (
-          <Flex flexDirection={["column"]} padding={"5px"} gap={"10px"}>
-            <Flex>
+          <Flex padding={"5px"} gap={"300px"}>
+            <Flex flexDirection={"column"} gap={"10px"}>
+              {topicsMdOne.map((topic, index) => {
+                return (
+                  <Link
+                    fontSize={{ base: "sm", md: "xl" }}
+                    key={index}
+                    color={"white"}
+                    marginLeft={"10px"}
+                  >
+                    {topic}
+                  </Link>
+                );
+              })}
+            </Flex>
+
+            <Flex flexDirection={"column"} gap={"10px"}>
               {topicsMdTwo.map((topic, index) => {
                 return (
                   <Link
