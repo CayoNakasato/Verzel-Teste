@@ -34,7 +34,7 @@ git clone git@github.com:CayoNakasato/Verzel-Teste.git
 1. cd Verzel-Teste/app/
 2. code .
 3. cd ..
-4. cd Verzel-Teste/api/
+4. cd api/
 5. code .
 ```
 
