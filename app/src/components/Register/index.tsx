@@ -29,6 +29,12 @@ const schema = z.object({
 });
 
 export const Register = () => {
+  // const breakpointValue = useBreakpointValue({
+  //   sm: "375px",
+  //   md: "768px",
+  //   lg: "1920px",
+  // });
+
   const [admin, setAdmin] = useState(false);
 
   const [showFirst, setShowFirst] = useState(false);
@@ -68,7 +74,7 @@ export const Register = () => {
       <Header />
 
       <Flex
-        width={"90%"}
+        width={["90%", "90%", "50%"]}
         margin={"0 auto"}
         marginTop={"30px"}
         flexDirection={"column"}

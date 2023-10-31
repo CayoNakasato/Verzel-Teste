@@ -43,7 +43,7 @@ export const Login = () => {
       <Header />
 
       <Flex
-        width={"90%"}
+        width={["90%", "90%", "50%"]}
         margin={"0 auto"}
         marginTop={"30px"}
         flexDirection={"column"}
@@ -102,7 +102,7 @@ export const Login = () => {
                 mt={4}
                 colorScheme="teal"
                 type="submit"
-                width={"100%"}
+                width={["100%"]}
                 margin={"0 auto"}
                 fontWeight={"700"}
                 fontSize={["md", "xl"]}

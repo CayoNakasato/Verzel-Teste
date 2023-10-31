@@ -82,7 +82,23 @@ export const CarCard: React.FC<CarCardProps> = ({ car }) => {
                 </Flex>
               </Flex>
             ) : (
-              <Text></Text>
+              <Flex
+                flexDirection={["column", "row"]}
+                justifyContent={"space-between"}
+                gap={"10px"}
+              >
+                <Text fontSize={{ base: "sm", md: "2xl" }} fontWeight={"600"}>
+                  R${car.price}
+                </Text>
+                <Flex gap={"20px"}>
+                  <Button onClick={() => setEditModalOpen(true)}>
+                    <FaEdit size={15} />
+                  </Button>
+                  <Button onClick={() => setDeleteModalOpen(true)}>
+                    <FaTrash size={15} />
+                  </Button>
+                </Flex>
+              </Flex>
             )}
 
             <Modal

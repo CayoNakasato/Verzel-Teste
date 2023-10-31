@@ -9,6 +9,7 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { Header } from "../Header";
 import { CarsListContainer } from "./CarsListContainer";
@@ -18,6 +19,12 @@ import { CreateVehicleForm } from "./Forms/CreateVehicleForm";
 import { VehicleContext } from "../../contexts/vehicleContext";
 
 export const Dashboard = () => {
+  const breakpointValue = useBreakpointValue({
+    sm: "375px",
+    md: "768px",
+    lg: "1920px",
+  });
+
   const [isCreateModalOpen, setCreateModalOpen] = useState(false);
 
   const { getUsers } = useContext(UserContext);
@@ -30,47 +37,103 @@ export const Dashboard = () => {
 
   return (
     <>
-      <Flex flexDirection={"column"} gap={"20px"}>
-        <Header />
+      {breakpointValue === "1920px" ? (
+        <>
+          {" "}
+          <Flex flexDirection={"column"} gap={"20px"}>
+            <Header />
 
-        <Flex padding={"20px"} flexDirection={"column"} gap={"10px"}>
-          <Heading as="h2" fontSize={"24px"}>
-            Dashboard
-          </Heading>
+            <Flex
+              padding={"20px"}
+              flexDirection={"column"}
+              gap={"10px"}
+              width={"80%"}
+              margin={"0 auto"}
+            >
+              <Heading as="h2" fontSize={"24px"}>
+                Dashboard
+              </Heading>
 
-          <Button
-            onClick={() => {
-              setCreateModalOpen(true);
-              getUsers();
-            }}
-            fontSize={{ base: "sm", md: "xl" }}
-          >
-            Add Vehicle
-          </Button>
+              <Button
+                onClick={() => {
+                  setCreateModalOpen(true);
+                  getUsers();
+                }}
+                fontSize={{ base: "sm", md: "xl" }}
+              >
+                Add Vehicle
+              </Button>
 
-          <Modal
-            closeOnOverlayClick={false}
-            isOpen={isCreateModalOpen}
-            onClose={() => setCreateModalOpen(false)}
-          >
-            <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>Create vehicle</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody>
-                <CreateVehicleForm closeModal={setCreateModalOpen} />
-              </ModalBody>
-            </ModalContent>
-          </Modal>
+              <Modal
+                closeOnOverlayClick={false}
+                isOpen={isCreateModalOpen}
+                onClose={() => setCreateModalOpen(false)}
+              >
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>Create vehicle</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    <CreateVehicleForm closeModal={setCreateModalOpen} />
+                  </ModalBody>
+                </ModalContent>
+              </Modal>
 
-          <Flex flexDirection={"column"} gap={"40px"}>
-            <Text fontSize={{ base: "sm", md: "2xl" }} fontWeight={"600"}>
-              Cars
-            </Text>
-            <CarsListContainer vehicles={vehicles} />
+              <Flex flexDirection={"column"} gap={"40px"}>
+                <Text fontSize={{ base: "sm", md: "2xl" }} fontWeight={"600"}>
+                  Cars
+                </Text>
+                <CarsListContainer vehicles={vehicles} />
+              </Flex>
+            </Flex>
           </Flex>
-        </Flex>
-      </Flex>
+        </>
+      ) : (
+        <>
+          {" "}
+          <Flex flexDirection={"column"} gap={"20px"}>
+            <Header />
+
+            <Flex padding={"20px"} flexDirection={"column"} gap={"10px"}>
+              <Heading as="h2" fontSize={"24px"}>
+                Dashboard
+              </Heading>
+
+              <Button
+                onClick={() => {
+                  setCreateModalOpen(true);
+                  getUsers();
+                }}
+                fontSize={{ base: "sm", md: "xl" }}
+              >
+                Add Vehicle
+              </Button>
+
+              <Modal
+                closeOnOverlayClick={false}
+                isOpen={isCreateModalOpen}
+                onClose={() => setCreateModalOpen(false)}
+              >
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>Create vehicle</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    <CreateVehicleForm closeModal={setCreateModalOpen} />
+                  </ModalBody>
+                </ModalContent>
+              </Modal>
+
+              <Flex flexDirection={"column"} gap={"40px"}>
+                <Text fontSize={{ base: "sm", md: "2xl" }} fontWeight={"600"}>
+                  Cars
+                </Text>
+                <CarsListContainer vehicles={vehicles} />
+              </Flex>
+            </Flex>
+          </Flex>
+        </>
+      )}
     </>
   );
 };

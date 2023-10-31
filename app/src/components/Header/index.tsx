@@ -14,7 +14,13 @@ import {
 } from "@chakra-ui/react";
 import { HamburguerNavLinks } from "./HamburguerNavLinks";
 import brazil from "../../assets/brazil.png";
-import { FaUserCircle } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { jwtDecode, JwtPayload } from "jwt-decode";
+import { useEffect, useState } from "react";
+
+interface DecodedToken extends JwtPayload {
+  admin: boolean;
+}
 
 export const Header = () => {
   const breakpointValue = useBreakpointValue({
@@ -22,6 +28,20 @@ export const Header = () => {
     md: "768px",
     lg: "1920px",
   });
+
+  const [isAdmin, setIsAdmin] = useState(false);
+  const token = localStorage.getItem("@Token");
+
+  useEffect(() => {
+    if (token) {
+      try {
+        const decodedToken = jwtDecode<DecodedToken>(token);
+        setIsAdmin(decodedToken.admin);
+      } catch (error) {
+        console.error("Failed to decode token:", error);
+      }
+    }
+  }, [token]);
 
   return (
     <>
@@ -82,10 +102,7 @@ export const Header = () => {
                   App Kavak
                 </Button>
 
-                <Accordion
-                  allowMultiple
-                  variant={"ghost"}
-                >
+                <Accordion allowMultiple variant={"ghost"}>
                   <AccordionItem>
                     <h2>
                       <AccordionButton>
@@ -119,18 +136,73 @@ export const Header = () => {
 
                 <Image src={brazil} width={"30px"} />
 
-                <Link href="/register">
-                  <Button
-                    color={"white"}
-                    backgroundColor={"black"}
-                    width={"95%"}
-                    fontWeight={["400", "600"]}
-                    fontSize={["md", "lg"]}
-                    leftIcon={<FaUserCircle />}
-                  >
-                    Cadastre-se
-                  </Button>
-                </Link>
+                {token && isAdmin ? (
+                  <>
+                    {" "}
+                    <Link href="/dashboard">
+                      <Button
+                        fontWeight={["400", "600"]}
+                        fontSize={["md", "lg"]}
+                      >
+                        Dashboard
+                      </Button>
+                    </Link>
+                    <Link href="/">
+                      <Button
+                        onClick={() => {
+                          localStorage.removeItem("@Token");
+                          toast.success("Log out realizado!");
+                        }}
+                        fontSize={["md", "lg"]}
+                        fontWeight={["400", "600"]}
+                      >
+                        Log out
+                      </Button>
+                    </Link>
+                  </>
+                ) : token && !isAdmin ? (
+                  <>
+                    {" "}
+                    <Link href="/">
+                      <Button
+                        onClick={() => {
+                          localStorage.removeItem("@Token");
+                          toast.success("Log out realizado!");
+                        }}
+                        fontSize={["md", "lg"]}
+                        fontWeight={["400", "600"]}
+                      >
+                        Log out
+                      </Button>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/register">
+                      <Button
+                        color={"white"}
+                        backgroundColor={"black"}
+                        width={"95%"}
+                        fontWeight={["400", "600"]}
+                        fontSize={["md", "lg"]}
+                      >
+                        Cadastre-se
+                      </Button>
+                    </Link>
+
+                    <Link href="/login">
+                      <Button
+                        color={"white"}
+                        backgroundColor={"black"}
+                        width={"95%"}
+                        fontWeight={["400", "600"]}
+                        fontSize={["md", "lg"]}
+                      >
+                        Logue-se
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </Flex>
             </Flex>
           </Flex>
