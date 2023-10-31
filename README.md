@@ -67,7 +67,14 @@ DATABASE_URL=postgresql://usuario:senha@localhost:5432/nome-do-banco-de-dados
 SECRET_KEY=""
 ```
 
-### Após terminar de configurar e baixar as dependências rode o projeto da api
+##### Ao instalar as dependências e configurar o .env lembre de rodar as migrations 
+```
+npx prisma migrate dev
+```
+
+De um nome para o primeiro migrate, para criar as tabelas e relações!
+
+### Após terminar de *configurar o .env* e *baixar as dependências* e *dar o migrate* rode o projeto da api
 ```
 npm run start:dev
 ```
