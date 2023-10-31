@@ -61,7 +61,7 @@ npm run dev
 npm i
 ```
 
-##### Ao terminal de instalar as dependências configure o *.env*
+##### Ao terminal de instalar as dependências crie e configure o *.env*
 ```
 DATABASE_URL=postgresql://usuario:senha@localhost:5432/nome-do-banco-de-dados
 SECRET_KEY=""
