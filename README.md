@@ -68,6 +68,8 @@ SECRET_KEY=""
 npm run start:dev
 ```
 
+### Documentação do backend
+#### A documentação do back end sera encontrada ao iniciar o projeto e entrar no link: http://localhost:3000/api
 
 ## Requisitos
 
