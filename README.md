@@ -20,7 +20,7 @@ O desafio Verzel Veiculos é uma aplicação Fullstack que permite aos usuários
 
 ## Instalação
 
-#### Clone o repositório
+#### Clone o repositório (SSH KEY)
 ```
 git clone git@github.com:CayoNakasato/Verzel-Teste.git
 ```` 
@@ -68,7 +68,7 @@ SECRET_KEY=""
 npm run start:dev
 ```
 
-### Documentação do backend
+## Documentação do backend
 #### A documentação do back end sera encontrada ao iniciar o projeto e entrar no link: http://localhost:3000/api
 
 ## Requisitos
