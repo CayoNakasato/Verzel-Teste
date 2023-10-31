@@ -39,7 +39,11 @@ git clone git@github.com:CayoNakasato/Verzel-Teste.git
 ```
 
 ### Ao estar com os dois projetos abertos siga com os comando em cada terminal:
-
+*Certifique se de estar logado no npm. Caso não esteja logado logue com:*
+```
+npm login
+```
+*Irá abrir uma página para logar na web e depois só verififcar no terminal se o login foi efetuado!*
 #### Terminal do App
 ```
 npm i
